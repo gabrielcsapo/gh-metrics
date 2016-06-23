@@ -1,0 +1,19 @@
+{
+  "name": "github-metrics",
+  "version": "0.0.0",
+  "description": "a repo to track github stats across different users github repos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielcsapo/github-metrics.git"
+  },
+  "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielcsapo/github-metrics/issues"
+  },
+  "homepage": "https://github.com/gabrielcsapo/github-metrics#readme"
+}
