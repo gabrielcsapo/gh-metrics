@@ -1,10 +1,11 @@
 {
   "name": "github-metrics",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "a repo to track github stats across different users github repos",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "scripts": {},
+  "bin": {
+    "github-metrics": "bin/github-metrics"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/gabrielcsapo/github-metrics/issues"
   },
-  "homepage": "https://github.com/gabrielcsapo/github-metrics#readme"
+  "homepage": "https://github.com/gabrielcsapo/github-metrics#readme",
+  "dependencies": {
+    "async": "^2.0.0-rc.6",
+    "commander": "^2.9.0",
+    "markdown-table": "^0.4.0",
+    "octonode": "^0.7.6",
+    "underscore": "^1.8.3"
+  }
 }

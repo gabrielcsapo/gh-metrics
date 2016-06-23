@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var metrics = require('../index.js');
+
+var Table = require('markdown-table');
+
+program
+    .version(require('../package.json').version)
+    .option('-u, --user [user]', 'the name of the user that you want to get metrics for.')
+    .parse(process.argv);
+
+if(program.user) {
+    metrics(program.user, function(response) {
+        var keys = Object.keys(response[0]).sort();
+        keys.push('badges');
+        var table = [keys];
+        response.forEach(function(repo) {
+            var row = [];
+            Object.keys(repo).sort().forEach(function(key) {
+                row.push(repo[key] ? JSON.stringify(repo[key]) : repo[key]);
+            });
+            row.push(
+                '[![Npm Version](https://img.shields.io/npm/v/' + repo.name + '.svg)](https://www.npmjs.com/package/' + repo.name +')' +
+                '[![Build Status](https://travis-ci.org/' + repo.full_name + '.svg?branch=master)](https://travis-ci.org/' + repo.full_name + ') [![Dependency Status](https://david-dm.org/' + repo.full_name + '.svg)](https://david-dm.org/' + repo.full_name + ')' +
+                '[![Dependency Status](https://david-dm.org/' + repo.full_name +'.svg)](https://david-dm.org/' + repo.full_name +')' +
+                '[![devDependency Status](https://david-dm.org/' + repo.full_name +'/dev-status.svg)](https://david-dm.org/' + repo.full_name +'#info=devDependencies)' +
+                '[![npm](https://img.shields.io/npm/dt/' + repo.name +'.svg)]()' +
+                '[![npm](https://img.shields.io/npm/dm/' + repo.name +'.svg)]()' +
+                '![npm license](https://img.shields.io/npm/l/' + repo.name +'.svg)'
+            )
+            table.push(row);
+        });
+        console.log(Table(table));
+    });
+} else {
+    console.error('please specify a user\n');
+}
