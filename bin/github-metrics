@@ -10,6 +10,8 @@ program
     .option('-u, --user [user]', 'the name of the user that you want to get metrics for.')
     .option('-t, --token [token]', 'github access token to make requests.')
     .option('-k, --keys [keys]', 'keys to be passed to make the table based on the comma seperated keys you provide.')
+    .option('-s, --sort [sort]', 'key to be used to sort against the returned value')
+    .option('-a, --asc', 'by default the sorting is descending if this is selected it will be ascending')
     .parse(process.argv);
 
 if (program.user) {
@@ -19,6 +21,24 @@ if (program.user) {
     metrics(program.user, program.token, program.keys, function(response) {
         var keys = Object.keys(response[0]).sort();
         var table = [keys];
+
+        // Lets do some sorting
+        if(program.sort) {
+            var temp = response.map(function(r, i) {
+                return [r[program.sort], i, r];
+            });
+
+            response = temp.sort(function(l, r) {
+                if(program.asc) {
+                    return l[0] < r[0] ? -1 : 1;
+                } else {
+                    return l[0] > r[0] ? -1 : 1;
+                }
+            }).map(function(o) {
+                return o[2];
+            });
+        }
+
         response.forEach(function(repo) {
             var row = [];
             Object.keys(repo).sort().forEach(function(key) {
