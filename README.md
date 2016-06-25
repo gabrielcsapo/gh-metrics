@@ -64,6 +64,7 @@
   'language',
   'languages',
   'languages_url',
+  'last_contribution',
   'merges_url',
   'milestones_url',
   'mirror_url',

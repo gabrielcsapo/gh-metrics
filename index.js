@@ -6,6 +6,9 @@ module.exports = function(user, token, keys, callback) {
     var ghuser = client.user(user);
 
     ghuser.repos(function(err, repos) {
+        if (err) {
+            throw err;
+        }
         var response = [];
 
         async.forEachOf(repos, function(repo, value, callback) {
@@ -21,6 +24,16 @@ module.exports = function(user, token, keys, callback) {
                         if (keys.indexOf('languages') > -1) {
                             ghrepo.languages(function(err, languages) {
                                 repo.languages = languages;
+                                callback();
+                            });
+                        } else {
+                            callback();
+                        }
+                    },
+                    function(callback) {
+                        if (keys.indexOf('last_contribution') > -1) {
+                            ghrepo.commits(function(err, commits) {
+                                repo.last_contribution = commits[0].commit.author.date;
                                 callback();
                             });
                         } else {
@@ -44,7 +57,7 @@ module.exports = function(user, token, keys, callback) {
                             callback();
                         }
                     }
-                ], function() {
+                ], function(err) {
                     callback();
                 });
             } else {
