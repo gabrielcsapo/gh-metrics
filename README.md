@@ -34,6 +34,7 @@
   'contents_url',
   'contributors_url',
   'created_at',
+  'days_stagnant',
   'default_branch',
   'deployments_url',
   'description',

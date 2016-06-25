@@ -41,6 +41,19 @@ module.exports = function(user, token, keys, callback) {
                         }
                     },
                     function(callback) {
+                        if (keys.indexOf('days_stagnant') > -1) {
+                            ghrepo.commits(function(err, commits) {
+                                var last = new Date(commits[0].commit.author.date);
+                                var today = new Date();
+                                var diff = Math.abs(last - today);
+                                repo.days_stagnant = Math.round(diff / (1000 * 60 * 60 * 24)) + ' days';
+                                callback();
+                            });
+                        } else {
+                            callback();
+                        }
+                    },
+                    function(callback) {
                         if (keys.indexOf('commits') > -1) {
                             ghrepo.contributors(function(err, contributors) {
                                 repo.commits = contributors.map(function(a) {
