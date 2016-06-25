@@ -19,7 +19,7 @@
 
 ### Keys Available
 
-```
+```javascript
 [
   'archive_url',
   'assignees_url',
