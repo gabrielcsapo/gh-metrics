@@ -1,38 +1,63 @@
-var _ = require('underscore');
 var github = require('octonode');
-var client = github.client('af7a395c3f2b34c21b982e1a520d054c79939dc7');
 var async = require('async');
 
-module.exports = function(user, callback) {
+module.exports = function(user, token, keys, callback) {
+    var client = github.client(token);
     var ghuser = client.user(user);
 
     ghuser.repos(function(err, repos) {
+        if (err) {
+            throw err;
+        }
         var response = [];
 
         async.forEachOf(repos, function(repo, value, callback) {
             if (repo.fork == false) {
-                var repo = _.pick(repo, 'name', 'full_name', 'homepage', 'description', 'created_at', 'git_url', 'stargazers_count', 'watchers', 'open_issues_count', 'size');
+                Object.keys(repo).forEach(function(k) {
+                    if (keys.indexOf(k) == -1) {
+                        delete repo[k];
+                    }
+                });
                 var ghrepo = client.repo(repo.full_name);
                 async.waterfall([
                     function(callback) {
-                        ghrepo.languages(function(err, languages) {
-                            repo.languages = languages;
+                        if (keys.indexOf('languages') > -1) {
+                            ghrepo.languages(function(err, languages) {
+                                repo.languages = languages;
+                                callback();
+                            });
+                        } else {
                             callback();
-                        });
+                        }
                     },
                     function(callback) {
-                        ghrepo.contributors(function(err, contributors) {
-                            repo.commits = contributors.map(function(a) {
-                                return a.contributions;
-                            })
-                            .reduce(function(a, b) {
-                                return a + b;
+                        if (keys.indexOf('last_contribution') > -1) {
+                            ghrepo.commits(function(err, commits) {
+                                repo.last_contribution = commits[0].commit.author.date;
+                                callback();
                             });
+                        } else {
+                            callback();
+                        }
+                    },
+                    function(callback) {
+                        if (keys.indexOf('commits') > -1) {
+                            ghrepo.contributors(function(err, contributors) {
+                                repo.commits = contributors.map(function(a) {
+                                    return a.contributions;
+                                })
+                                .reduce(function(a, b) {
+                                    return a + b;
+                                });
+                                response.push(repo);
+                                callback();
+                            });
+                        } else {
                             response.push(repo);
                             callback();
-                        });
+                        }
                     }
-                ], function() {
+                ], function(err) {
                     callback();
                 });
             } else {
@@ -40,7 +65,6 @@ module.exports = function(user, callback) {
             }
         }, function(err) {
             callback(response);
-
         });
 
     });

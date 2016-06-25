@@ -21,7 +21,6 @@
     "async": "^2.0.0-rc.6",
     "commander": "^2.9.0",
     "markdown-table": "^0.4.0",
-    "octonode": "^0.7.6",
-    "underscore": "^1.8.3"
+    "octonode": "^0.7.6"
   }
 }
