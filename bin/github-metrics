@@ -12,8 +12,10 @@ program
     .option('-k, --keys [keys]', 'keys to be passed to make the table based on the comma seperated keys you provide.')
     .parse(process.argv);
 
-if(program.user) {
-    program.keys = program.keys.split(',').map(function(k) { return k.trim(); }) || ['full_name', 'homepage', 'description', 'created_at', 'size'];
+if (program.user) {
+    program.keys = program.keys.split(',').map(function(k) {
+        return k.trim();
+    }) || ['full_name', 'homepage', 'description', 'created_at', 'size'];
     metrics(program.user, program.token, program.keys, function(response) {
         var keys = Object.keys(response[0]).sort();
         var table = [keys];

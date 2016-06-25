@@ -44,11 +44,11 @@ module.exports = function(user, token, keys, callback) {
                         if (keys.indexOf('commits') > -1) {
                             ghrepo.contributors(function(err, contributors) {
                                 repo.commits = contributors.map(function(a) {
-                                    return a.contributions;
-                                })
-                                .reduce(function(a, b) {
-                                    return a + b;
-                                });
+                                        return a.contributions;
+                                    })
+                                    .reduce(function(a, b) {
+                                        return a + b;
+                                    });
                                 response.push(repo);
                                 callback();
                             });
