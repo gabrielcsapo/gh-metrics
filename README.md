@@ -98,26 +98,26 @@
 
 ## Example
 
-`github-metrics --user gabrielcsapo --keys 'full_name, homepage, commits'`
+`github-metrics --user gabrielcsapo --keys 'full_name, homepage, commits' --sort 'commits'`
 
 | commits | full_name                       | homepage                                        |
 | ------- | ------------------------------- | ----------------------------------------------- |
+| 225     | "gabrielcsapo/node-flat-db"     |                                                 |
+| 146     | "gabrielcsapo/granary-server"   | "http://granaryjs.com"                          |
+| 103     | "gabrielcsapo/node-notebook"    | "http://gabrielcsapo.github.io/node-notebook/"  |
+| 102     | "gabrielcsapo/psychic-ui"       | "http://gabrielcsapo.github.io/psychic-ui/"     |
+| 61      | "gabrielcsapo/node-distribute"  |                                                 |
+| 55      | "gabrielcsapo/granary"          | "http://gabrielcsapo.github.io/granary-server/" |
+| 54      | "gabrielcsapo/node-chat-rooms"  |                                                 |
+| 49      | "gabrielcsapo/saywhat"          | "http://gabrielcsapo.github.io/saywhat/"        |
+| 47      | "gabrielcsapo/gabrielcsapo.com" | "www.gabrielcsapo.com"                          |
+| 39      | "gabrielcsapo/node-dashboard"   |                                                 |
+| 37      | "gabrielcsapo/grunt-screenshot" |                                                 |
+| 22      | "gabrielcsapo/npm-what"         |                                                 |
+| 22      | "gabrielcsapo/steno"            | "http://gabrielcsapo.github.io/steno/"          |
+| 16      | "gabrielcsapo/prompt"           |                                                 |
+| 12      | "gabrielcsapo/github-metrics"   |                                                 |
+| 11      | "gabrielcsapo/dobby"            |                                                 |
+| 9       | "gabrielcsapo/tabular"          |                                                 |
 | 6       | "gabrielcsapo/compress-object"  |                                                 |
 | 5       | "gabrielcsapo/granary-sample"   |                                                 |
-| 37      | "gabrielcsapo/grunt-screenshot" |                                                 |
-| 11      | "gabrielcsapo/dobby"            |                                                 |
-| 54      | "gabrielcsapo/node-chat-rooms"  |                                                 |
-| 146     | "gabrielcsapo/granary-server"   | "http://granaryjs.com"                          |
-| 4       | "gabrielcsapo/github-metrics"   |                                                 |
-| 39      | "gabrielcsapo/node-dashboard"   |                                                 |
-| 55      | "gabrielcsapo/granary"          | "http://gabrielcsapo.github.io/granary-server/" |
-| 47      | "gabrielcsapo/gabrielcsapo.com" | "www.gabrielcsapo.com"                          |
-| 22      | "gabrielcsapo/steno"            | "http://gabrielcsapo.github.io/steno/"          |
-| 61      | "gabrielcsapo/node-distribute"  |                                                 |
-| 49      | "gabrielcsapo/saywhat"          | "http://gabrielcsapo.github.io/saywhat/"        |
-| 16      | "gabrielcsapo/prompt"           |                                                 |
-| 102     | "gabrielcsapo/psychic-ui"       | "http://gabrielcsapo.github.io/psychic-ui/"     |
-| 22      | "gabrielcsapo/npm-what"         |                                                 |
-| 9       | "gabrielcsapo/tabular"          |                                                 |
-| 225     | "gabrielcsapo/node-flat-db"     |                                                 |
-| 103     | "gabrielcsapo/node-notebook"    | "http://gabrielcsapo.github.io/node-notebook/"  |
