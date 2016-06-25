@@ -46,7 +46,7 @@ module.exports = function(user, token, keys, callback) {
                                 var last = new Date(commits[0].commit.author.date);
                                 var today = new Date();
                                 var diff = Math.abs(last - today);
-                                repo.days_stagnant = Math.round(diff / (1000 * 60 * 60 * 24)) + ' days';
+                                repo.days_stagnant = Math.round(diff / (1000 * 60 * 60 * 24));
                                 callback();
                             });
                         } else {
