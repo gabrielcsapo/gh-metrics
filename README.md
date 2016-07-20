@@ -53,6 +53,7 @@
   'has_issues',
   'has_pages',
   'has_wiki',
+  'health',
   'homepage',
   'hooks_url',
   'html_url',

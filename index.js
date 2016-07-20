@@ -62,6 +62,28 @@ module.exports = function(user, token, keys, callback) {
                                     .reduce(function(a, b) {
                                         return a + b;
                                     });
+                                callback();
+                            });
+                        } else {
+                            callback();
+                        }
+                    },
+                    function(callback) {
+                        if (keys.indexOf('health') > -1) {
+                            ghrepo.commits(function(err, commits) {
+                                var last = new Date(commits[0].commit.author.date);
+                                var today = new Date();
+                                var diff = Math.abs(last - today);
+                                var days_stagnant = Math.round(diff / (1000 * 60 * 60 * 24));
+                                var health = '🌩';
+                                if(days_stagnant < 5) {
+                                    health = '🌞';
+                                } else if(days_stagnant > 5 && days_stagnant < 20) {
+                                    health = '⛅️';
+                                } else if (days_stagnant > 20 && days_stagnant < 35) {
+                                    health = '🌦';
+                                }
+                                repo.health = health;
                                 response.push(repo);
                                 callback();
                             });
