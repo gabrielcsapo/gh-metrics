@@ -104,23 +104,24 @@
 
 | commits | full_name                                       | health | homepage                                       |
 | ------- | ----------------------------------------------- | ------ | ---------------------------------------------- |
-| 225     | "gabrielcsapo/node-flat-db"                     | "🌦"   |                                                |
-| 151     | "gabrielcsapo/granary-server"                   | "⛅️"   | "http://granaryjs.com"                         |
-| 104     | "gabrielcsapo/node-notebook"                    | "🌦"   | "http://gabrielcsapo.github.io/node-notebook/" |
-| 102     | "gabrielcsapo/psychic-ui"                       | "🌦"   | "http://gabrielcsapo.github.io/psychic-ui/"    |
-| 61      | "gabrielcsapo/node-distribute"                  | "🌦"   |                                                |
-| 57      | "gabrielcsapo/granary"                          | "⛅️"   | "http://granaryjs.com"                         |
-| 54      | "gabrielcsapo/node-chat-rooms"                  | "🌦"   |                                                |
-| 52      | "gabrielcsapo/gabrielcsapo.com"                 | "⛅️"   | "www.gabrielcsapo.com"                         |
-| 49      | "gabrielcsapo/saywhat"                          | "🌩"   | "http://gabrielcsapo.github.io/saywhat/"       |
-| 43      | "gabrielcsapo/node-dashboard"                   | "🌦"   |                                                |
-| 40      | "gabrielcsapo/grunt-screenshot"                 | "🌞"   |                                                |
+| 225     | "gabrielcsapo/node-flat-db"                     | "🌩"   |                                                |
+| 153     | "gabrielcsapo/granary-server"                   | "⛅️"   | "http://granaryjs.com"                         |
+| 119     | "gabrielcsapo/node-notebook"                    | "🌞"   | "http://gabrielcsapo.github.io/node-notebook/" |
+| 104     | "gabrielcsapo/psychic-ui"                       | "⛅️"   | "http://gabrielcsapo.github.io/psychic-ui/"    |
+| 63      | "gabrielcsapo/node-distribute"                  | "🌞"   |                                                |
+| 59      | "gabrielcsapo/granary"                          | "⛅️"   | "http://granaryjs.com"                         |
+| 58      | "gabrielcsapo/node-chat-rooms"                  | "🌞"   |                                                |
+| 55      | "gabrielcsapo/gabrielcsapo.com"                 | "⛅️"   | "www.gabrielcsapo.com"                         |
+| 51      | "gabrielcsapo/saywhat"                          | "⛅️"   | "http://gabrielcsapo.github.io/saywhat/"       |
+| 47      | "gabrielcsapo/node-dashboard"                   | "🌞"   |                                                |
+| 45      | "gabrielcsapo/grunt-screenshot"                 | "⛅️"   |                                                |
+| 24      | "gabrielcsapo/npm-what"                         | "⛅️"   |                                                |
 | 24      | "gabrielcsapo/steno"                            | "🌦"   | "http://gabrielcsapo.github.io/steno/"         |
-| 22      | "gabrielcsapo/npm-what"                         | "🌦"   |                                                |
-| 18      | "gabrielcsapo/github-metrics"                   | "🌞"   |                                                |
+| 21      | "gabrielcsapo/github-metrics"                   | "⛅️"   |                                                |
 | 16      | "gabrielcsapo/prompt"                           | "🌩"   |                                                |
 | 11      | "gabrielcsapo/dobby"                            | "🌩"   |                                                |
+| 11      | "gabrielcsapo/compress-object"                  | "🌞"   |                                                |
 | 9       | "gabrielcsapo/tabular"                          | "🌩"   |                                                |
-| 6       | "gabrielcsapo/compress-object"                  | "🌦"   |                                                |
 | 5       | "gabrielcsapo/granary-sample"                   | "🌩"   |                                                |
 | 2       | "gabrielcsapo/mocha-markdown-extended-reporter" | "⛅️"   |                                                |
+| 2       | "gabrielcsapo/node-document-parser"             | "🌞"   |                                                |
