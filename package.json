@@ -3,7 +3,9 @@
   "version": "0.1.4",
   "description": "a repo to track github stats across different users github repos",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "./node_modules/.bin/eslint .;"
+  },
   "bin": {
     "github-metrics": "bin/github-metrics"
   },
@@ -22,5 +24,8 @@
     "commander": "^2.9.0",
     "markdown-table": "^0.4.0",
     "octonode": "^0.7.6"
+  },
+  "devDependencies": {
+    "eslint": "^3.2.0"
   }
 }

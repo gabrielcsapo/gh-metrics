@@ -23,6 +23,9 @@ module.exports = function(user, token, keys, callback) {
                     function(callback) {
                         if (keys.indexOf('languages') > -1) {
                             ghrepo.languages(function(err, languages) {
+                                if (err) {
+                                    throw err;
+                                }
                                 repo.languages = languages;
                                 callback();
                             });
@@ -33,6 +36,9 @@ module.exports = function(user, token, keys, callback) {
                     function(callback) {
                         if (keys.indexOf('last_contribution') > -1) {
                             ghrepo.commits(function(err, commits) {
+                                if (err) {
+                                    throw err;
+                                }
                                 repo.last_contribution = commits[0].commit.author.date;
                                 callback();
                             });
@@ -43,6 +49,9 @@ module.exports = function(user, token, keys, callback) {
                     function(callback) {
                         if (keys.indexOf('days_stagnant') > -1) {
                             ghrepo.commits(function(err, commits) {
+                                if (err) {
+                                    throw err;
+                                }
                                 var last = new Date(commits[0].commit.author.date);
                                 var today = new Date();
                                 var diff = Math.abs(last - today);
@@ -56,6 +65,9 @@ module.exports = function(user, token, keys, callback) {
                     function(callback) {
                         if (keys.indexOf('commits') > -1) {
                             ghrepo.contributors(function(err, contributors) {
+                                if (err) {
+                                    throw err;
+                                }
                                 repo.commits = contributors.map(function(a) {
                                         return a.contributions;
                                     })
@@ -71,6 +83,9 @@ module.exports = function(user, token, keys, callback) {
                     function(callback) {
                         if (keys.indexOf('health') > -1) {
                             ghrepo.commits(function(err, commits) {
+                                if (err) {
+                                    throw err;
+                                }
                                 var last = new Date(commits[0].commit.author.date);
                                 var today = new Date();
                                 var diff = Math.abs(last - today);
@@ -93,12 +108,18 @@ module.exports = function(user, token, keys, callback) {
                         }
                     }
                 ], function(err) {
+                    if (err) {
+                        throw err;
+                    }
                     callback();
                 });
             } else {
                 callback();
             }
         }, function(err) {
+            if (err) {
+                throw err;
+            }
             callback(response);
         });
 
