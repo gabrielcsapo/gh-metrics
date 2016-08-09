@@ -1,6 +1,6 @@
 {
   "name": "github-metrics",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "a repo to track github stats across different users github repos",
   "main": "index.js",
   "scripts": {
@@ -20,12 +20,12 @@
   },
   "homepage": "https://github.com/gabrielcsapo/github-metrics#readme",
   "dependencies": {
-    "async": "^2.0.0-rc.6",
+    "async": "^2.0.1",
     "commander": "^2.9.0",
     "markdown-table": "^0.4.0",
     "octonode": "^0.7.6"
   },
   "devDependencies": {
-    "eslint": "^3.2.0"
+    "eslint": "^3.2.2"
   }
 }
