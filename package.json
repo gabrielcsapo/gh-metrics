@@ -1,6 +1,6 @@
 {
   "name": "github-metrics",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "a repo to track github stats across different users github repos",
   "main": "index.js",
   "scripts": {
@@ -22,10 +22,10 @@
   "dependencies": {
     "async": "^2.0.1",
     "commander": "^2.9.0",
-    "markdown-table": "^0.4.0",
+    "markdown-table": "^1.0.0",
     "octonode": "^0.7.6"
   },
   "devDependencies": {
-    "eslint": "^3.2.2"
+    "eslint": "^3.3.1"
   }
 }
