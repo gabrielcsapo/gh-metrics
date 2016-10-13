@@ -101,30 +101,30 @@
 
 ## Example
 
-`github-metrics --user gabrielcsapo --keys 'full_name, homepage, commits, open_issues_count, health' --sort 'commits'`
+`github-metrics --user gabrielcsapo --keys 'full_name, homepage, commits, open_issues_count, days_stagnant, health' --sort 'days_stagnant'`
 
-| commits | full_name                                       | health | homepage                                       |
-| ------- | ----------------------------------------------- | ------ | ---------------------------------------------- |
-| 226     | "gabrielcsapo/node-flat-db"                     | "🌦"   |                                                |
-| 167     | "gabrielcsapo/granary-server"                   | "🌦"   | "http://granaryjs.com"                         |
-| 121     | "gabrielcsapo/node-notebook"                    | "🌦"   | "http://www.gabrielcsapo.com/node-notebook/"   |
-| 107     | "gabrielcsapo/psychic-ui"                       | "🌞"   | "http://www.gabrielcsapo.com/psychic-ui/"      |
-| 72      | "gabrielcsapo/node-dashboard"                   | "🌩"   |                                                |
-| 66      | "gabrielcsapo/node-distribute"                  | "⛅️"   |                                                |
-| 65      | "gabrielcsapo/granary"                          | "🌦"   | "http://granaryjs.com"                         |
-| 60      | "gabrielcsapo/node-chat-rooms"                  | "🌦"   |                                                |
-| 56      | "gabrielcsapo/gabrielcsapo.github.io"           | "⛅️"   | "http://www.gabrielcsapo.com"                  |
-| 53      | "gabrielcsapo/saywhat"                          | "🌞"   | "http://www.gabrielcsapo.com/saywhat/"         |
-| 51      | "gabrielcsapo/grunt-screenshot"                 | "🌦"   |                                                |
-| 30      | "gabrielcsapo/npm-what"                         | "🌦"   |                                                |
-| 27      | "gabrielcsapo/github-metrics"                   | "⛅️"   |                                                |
-| 24      | "gabrielcsapo/steno"                            | "🌩"   | "http://www.gabrielcsapo.com/steno/"           |
-| 17      | "gabrielcsapo/quantified_self"                  | "⛅️"   |                                                |
-| 17      | "gabrielcsapo/compress-object"                  | "🌞"   | "http://www.gabrielcsapo.com/compress-object/" |
-| 16      | "gabrielcsapo/prompt"                           | "🌩"   |                                                |
-| 11      | "gabrielcsapo/dobby"                            | "🌩"   |                                                |
-| 10      | "gabrielcsapo/node-document-parser"             | "🌦"   |                                                |
-| 9       | "gabrielcsapo/tabular"                          | "🌩"   |                                                |
-| 7       | "gabrielcsapo/node-timecapsule"                 | "🌞"   |                                                |
-| 5       | "gabrielcsapo/granary-sample"                   | "🌩"   |                                                |
-| 2       | "gabrielcsapo/mocha-markdown-extended-reporter" | "🌩"   |                                                |
+| commits | days_stagnant | full_name                                       | health | homepage                                       | open_issues_count |
+| ------- | ------------- | ----------------------------------------------- | ------ | ---------------------------------------------- | ----------------- |
+| 9       | 523           | "gabrielcsapo/tabular"                          | "🌩"   |                                                | 0                 |
+| 16      | 515           | "gabrielcsapo/prompt"                           | "🌩"   |                                                | 0                 |
+| 11      | 420           | "gabrielcsapo/dobby"                            | "🌩"   |                                                | 0                 |
+| 5       | 151           | "gabrielcsapo/granary-sample"                   | "🌩"   |                                                | 0                 |
+| 24      | 108           | "gabrielcsapo/steno"                            | "🌩"   | "http://www.gabrielcsapo.com/steno/"           | 1                 |
+| 2       | 92            | "gabrielcsapo/mocha-markdown-extended-reporter" | "🌩"   |                                                | 0                 |
+| 10      | 76            | "gabrielcsapo/node-document-parser"             | "🌩"   |                                                | 0                 |
+| 60      | 70            | "gabrielcsapo/node-chat-rooms"                  | "🌩"   |                                                | 2                 |
+| 30      | 70            | "gabrielcsapo/npm-what"                         | "🌩"   |                                                | 2                 |
+| 121     | 70            | "gabrielcsapo/node-notebook"                    | "🌩"   | "http://www.gabrielcsapo.com/node-notebook/"   | 2                 |
+| 167     | 66            | "gabrielcsapo/granary-server"                   | "🌩"   | "http://granaryjs.com"                         | 0                 |
+| 51      | 66            | "gabrielcsapo/grunt-screenshot"                 | "🌩"   |                                                | 0                 |
+| 65      | 66            | "gabrielcsapo/granary"                          | "🌩"   | "http://granaryjs.com"                         | 0                 |
+| 66      | 60            | "gabrielcsapo/node-distribute"                  | "🌩"   |                                                | 1                 |
+| 56      | 56            | "gabrielcsapo/gabrielcsapo.github.io"           | "🌩"   | "http://www.gabrielcsapo.com"                  | 1                 |
+| 7       | 46            | "gabrielcsapo/node-timecapsule"                 | "🌩"   |                                                | 0                 |
+| 107     | 43            | "gabrielcsapo/psychic-ui"                       | "🌩"   | "http://www.gabrielcsapo.com/psychic-ui/"      | 2                 |
+| 17      | 43            | "gabrielcsapo/compress-object"                  | "🌩"   | "http://www.gabrielcsapo.com/compress-object/" | 0                 |
+| 60      | 42            | "gabrielcsapo/saywhat"                          | "🌩"   | "http://www.gabrielcsapo.com/saywhat/"         | 0                 |
+| 28      | 42            | "gabrielcsapo/github-metrics"                   | "🌩"   |                                                | 0                 |
+| 227     | 39            | "gabrielcsapo/node-flat-db"                     | "🌩"   |                                                | 0                 |
+| 79      | 34            | "gabrielcsapo/node-dashboard"                   | "🌦"   |                                                | 0                 |
+| 43      | 15            | "gabrielcsapo/quantified_self"                  | "⛅️"   |                                                | 4                 |
