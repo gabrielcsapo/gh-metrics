@@ -14,9 +14,18 @@
 
 ## Usage
 
+> command-line
+
 `github-metrics --user gabrielcsapo` // this will call github using the public api
 
 `github-metrics --user gabrielcsapo --token {token}` // this will make the call with an authenticated token
+
+> programatic
+
+```javascript
+var metrics = require('github-metrics');
+metrics(user, token, keys, function(res) { });
+```
 
 ### Keys Available
 
