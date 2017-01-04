@@ -18,26 +18,15 @@ if (program.user) {
     program.keys = program.keys.split(',').map(function(k) {
         return k.trim();
     }) || ['full_name', 'homepage', 'description', 'created_at', 'size'];
-    metrics(program.user, program.token, program.keys, function(response) {
+    metrics({
+        user: program.user,
+        token: program.token,
+        keys: program.keys,
+        sort: program.sort,
+        sortAsc: program.asc ? true : false
+    }, function(response) {
         var keys = Object.keys(response[0]).sort();
         var table = [keys];
-
-        // Lets do some sorting
-        if(program.sort) {
-            var temp = response.map(function(r, i) {
-                return [r[program.sort], i, r];
-            });
-
-            response = temp.sort(function(l, r) {
-                if(program.asc) {
-                    return l[0] < r[0] ? -1 : 1;
-                } else {
-                    return l[0] > r[0] ? -1 : 1;
-                }
-            }).map(function(o) {
-                return o[2];
-            });
-        }
 
         response.forEach(function(repo) {
             var row = [];
