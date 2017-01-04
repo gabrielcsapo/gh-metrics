@@ -24,7 +24,13 @@
 
 ```javascript
 var metrics = require('github-metrics');
-metrics(user, token, keys, function(res) { });
+metrics({
+    user: '',
+    token: '',
+    keys: [],
+    sort: '',
+    sortAsc: false
+}, function(res) { });
 ```
 
 ### Keys Available

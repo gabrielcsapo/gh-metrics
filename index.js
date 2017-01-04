@@ -1,7 +1,13 @@
 var github = require('octonode');
 var async = require('async');
 
-module.exports = function(user, token, keys, callback) {
+module.exports = function(options, callback) {
+    var user = options.user;
+    var token = options.token;
+    var keys = options.keys;
+    var sort = options.sort;
+    var sortAsc = options.sortAsc;
+
     var client = github.client(token);
     var ghuser = client.user(user);
 
@@ -119,6 +125,22 @@ module.exports = function(user, token, keys, callback) {
         }, function(err) {
             if (err) {
                 throw err;
+            }
+            // Lets do some sorting
+            if(sort) {
+                var temp = response.map(function(r, i) {
+                    return [r[sort], i, r];
+                });
+
+                response = temp.sort(function(l, r) {
+                    if(sortAsc) {
+                        return l[0] < r[0] ? -1 : 1;
+                    } else {
+                        return l[0] > r[0] ? -1 : 1;
+                    }
+                }).map(function(o) {
+                    return o[2];
+                });
             }
             callback(response);
         });
