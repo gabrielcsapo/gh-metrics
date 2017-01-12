@@ -1,11 +1,11 @@
 #!/usr/bin/env node
+"use strict"
 
-var program = require('commander');
-var metrics = require('../index.js');
+const Program = require('commander');
+const Metrics = require('../index.js');
+const Table = require('markdown-table');
 
-var Table = require('markdown-table');
-
-program
+Program
     .version(require('../package.json').version)
     .option('-u, --user [user]', 'the name of the user that you want to get metrics for.')
     .option('-t, --token [token]', 'github access token to make requests.')
@@ -14,23 +14,23 @@ program
     .option('-a, --asc', 'by default the sorting is descending if this is selected it will be ascending')
     .parse(process.argv);
 
-if (program.user) {
-    program.keys = program.keys.split(',').map(function(k) {
+if (Program.user) {
+    Program.keys = Program.keys.split(',').map((k) => {
         return k.trim();
     }) || ['full_name', 'homepage', 'description', 'created_at', 'size'];
-    metrics({
-        user: program.user,
-        token: program.token,
-        keys: program.keys,
-        sort: program.sort,
-        sortAsc: program.asc ? true : false
+    Metrics({
+        user: Program.user,
+        token: Program.token,
+        keys: Program.keys,
+        sort: Program.sort,
+        sortAsc: Program.asc ? true : false
     }, function(response) {
-        var keys = Object.keys(response[0]).sort();
-        var table = [keys];
+        const keys = Program.keys;
+        const table = [keys];
 
         response.forEach(function(repo) {
-            var row = [];
-            Object.keys(repo).sort().forEach(function(key) {
+            let row = [];
+            keys.forEach(function(key) {
                 row.push(repo[key] ? JSON.stringify(repo[key]) : repo[key]);
             });
             table.push(row);
