@@ -1,34 +1,35 @@
-var github = require('octonode');
-var async = require('async');
+"use strict"
 
-module.exports = function(options, callback) {
-    var user = options.user;
-    var token = options.token;
-    var keys = options.keys;
-    var sort = options.sort;
-    var sortAsc = options.sortAsc;
+const Github = require('octonode');
+const Async = require('async');
 
-    var client = github.client(token);
-    var ghuser = client.user(user);
+module.exports = (options, callback) => {
+    const user = options.user;
+    const token = options.token;
+    const keys = options.keys;
+    const sort = options.sort;
+    const sortAsc = options.sortAsc;
+    const client = Github.client(token);
+    const ghuser = client.user(user);
 
-    ghuser.repos(function(err, repos) {
+    ghuser.repos((err, repos) => {
         if (err) {
             throw err;
         }
-        var response = [];
-
-        async.forEachOf(repos, function(repo, value, callback) {
+        
+        let response = [];
+        Async.forEachOf(repos, (repo, value, callback) => {
             if (repo.fork == false) {
-                Object.keys(repo).forEach(function(k) {
+                Object.keys(repo).forEach((k) => {
                     if (keys.indexOf(k) == -1) {
                         delete repo[k];
                     }
                 });
                 var ghrepo = client.repo(repo.full_name);
-                async.waterfall([
-                    function(callback) {
+                Async.waterfall([
+                     (callback) => {
                         if (keys.indexOf('languages') > -1) {
-                            ghrepo.languages(function(err, languages) {
+                            ghrepo.languages((err, languages) => {
                                 if (err) {
                                     throw err;
                                 }
@@ -39,9 +40,9 @@ module.exports = function(options, callback) {
                             callback();
                         }
                     },
-                    function(callback) {
+                    (callback) => {
                         if (keys.indexOf('last_contribution') > -1) {
-                            ghrepo.commits(function(err, commits) {
+                            ghrepo.commits((err, commits) => {
                                 if (err) {
                                     throw err;
                                 }
@@ -52,15 +53,15 @@ module.exports = function(options, callback) {
                             callback();
                         }
                     },
-                    function(callback) {
+                    (callback) => {
                         if (keys.indexOf('days_stagnant') > -1) {
-                            ghrepo.commits(function(err, commits) {
+                            ghrepo.commits((err, commits) => {
                                 if (err) {
                                     throw err;
                                 }
-                                var last = new Date(commits[0].commit.author.date);
-                                var today = new Date();
-                                var diff = Math.abs(last - today);
+                                let last = new Date(commits[0].commit.author.date);
+                                let today = new Date();
+                                let diff = Math.abs(last - today);
                                 repo.days_stagnant = Math.round(diff / (1000 * 60 * 60 * 24));
                                 callback();
                             });
@@ -68,16 +69,16 @@ module.exports = function(options, callback) {
                             callback();
                         }
                     },
-                    function(callback) {
+                    (callback) => {
                         if (keys.indexOf('commits') > -1) {
-                            ghrepo.contributors(function(err, contributors) {
+                            ghrepo.contributors((err, contributors) => {
                                 if (err) {
                                     throw err;
                                 }
-                                repo.commits = contributors.map(function(a) {
+                                repo.commits = contributors.map((a) => {
                                         return a.contributions;
                                     })
-                                    .reduce(function(a, b) {
+                                    .reduce((a, b) => {
                                         return a + b;
                                     });
                                 callback();
@@ -86,22 +87,22 @@ module.exports = function(options, callback) {
                             callback();
                         }
                     },
-                    function(callback) {
+                    (callback) => {
                         if (keys.indexOf('health') > -1) {
-                            ghrepo.commits(function(err, commits) {
+                            ghrepo.commits((err, commits) => {
                                 if (err) {
                                     throw err;
                                 }
-                                var last = new Date(commits[0].commit.author.date);
-                                var today = new Date();
-                                var diff = Math.abs(last - today);
-                                var days_stagnant = Math.round(diff / (1000 * 60 * 60 * 24));
-                                var health = '🌩';
-                                if(days_stagnant < 5) {
+                                let last = new Date(commits[0].commit.author.date);
+                                let today = new Date();
+                                let diff = Math.abs(last - today);
+                                let days_stagnant = Math.round(diff / 86400000);
+                                let health = '🌩';
+                                if(days_stagnant < 30) {
                                     health = '🌞';
-                                } else if(days_stagnant > 5 && days_stagnant < 20) {
+                                } else if(days_stagnant > 30 && days_stagnant < 60) {
                                     health = '⛅️';
-                                } else if (days_stagnant > 20 && days_stagnant < 35) {
+                                } else if (days_stagnant > 60 && days_stagnant < 90) {
                                     health = '🌦';
                                 }
                                 repo.health = health;
@@ -113,7 +114,7 @@ module.exports = function(options, callback) {
                             callback();
                         }
                     }
-                ], function(err) {
+                ], (err) => {
                     if (err) {
                         throw err;
                     }
@@ -122,25 +123,22 @@ module.exports = function(options, callback) {
             } else {
                 callback();
             }
-        }, function(err) {
+        }, (err) => {
             if (err) {
                 throw err;
             }
             // Lets do some sorting
             if(sort) {
-                var temp = response.map(function(r, i) {
-                    return [r[sort], i, r];
-                });
-
-                response = temp.sort(function(l, r) {
+                response = response
+                .map((r, i) => [r[sort], i, r])
+                .sort((l, r) => {
                     if(sortAsc) {
                         return l[0] < r[0] ? -1 : 1;
                     } else {
                         return l[0] > r[0] ? -1 : 1;
                     }
-                }).map(function(o) {
-                    return o[2];
-                });
+                })
+                .map((o) => o[2]);
             }
             callback(response);
         });
