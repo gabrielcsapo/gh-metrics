@@ -14,9 +14,9 @@ module.exports = (options, callback) => {
 
     ghuser.repos((err, repos) => {
         if (err) {
-            throw err;
+            return callback(err);
         }
-        
+
         let response = [];
         Async.forEachOf(repos, (repo, value, callback) => {
             if (repo.fork == false) {
@@ -31,7 +31,7 @@ module.exports = (options, callback) => {
                         if (keys.indexOf('languages') > -1) {
                             ghrepo.languages((err, languages) => {
                                 if (err) {
-                                    throw err;
+                                    return callback(err);
                                 }
                                 repo.languages = languages;
                                 callback();
@@ -44,7 +44,7 @@ module.exports = (options, callback) => {
                         if (keys.indexOf('last_contribution') > -1) {
                             ghrepo.commits((err, commits) => {
                                 if (err) {
-                                    throw err;
+                                    return callback(err);
                                 }
                                 repo.last_contribution = commits[0].commit.author.date;
                                 callback();
@@ -57,7 +57,7 @@ module.exports = (options, callback) => {
                         if (keys.indexOf('days_stagnant') > -1) {
                             ghrepo.commits((err, commits) => {
                                 if (err) {
-                                    throw err;
+                                    return callback(err);
                                 }
                                 let last = new Date(commits[0].commit.author.date);
                                 let today = new Date();
@@ -73,7 +73,7 @@ module.exports = (options, callback) => {
                         if (keys.indexOf('commits') > -1) {
                             ghrepo.contributors((err, contributors) => {
                                 if (err) {
-                                    throw err;
+                                    return callback(err);
                                 }
                                 repo.commits = contributors.map((a) => {
                                         return a.contributions;
@@ -91,7 +91,7 @@ module.exports = (options, callback) => {
                         if (keys.indexOf('health') > -1) {
                             ghrepo.commits((err, commits) => {
                                 if (err) {
-                                    throw err;
+                                    return callback(err);
                                 }
                                 let last = new Date(commits[0].commit.author.date);
                                 let today = new Date();
@@ -116,7 +116,7 @@ module.exports = (options, callback) => {
                     }
                 ], (err) => {
                     if (err) {
-                        throw err;
+                        return callback(err);
                     }
                     callback();
                 });
@@ -125,7 +125,7 @@ module.exports = (options, callback) => {
             }
         }, (err) => {
             if (err) {
-                throw err;
+                return callback(err, undefined);
             }
             // Lets do some sorting
             if(sort) {
@@ -140,7 +140,7 @@ module.exports = (options, callback) => {
                 })
                 .map((o) => o[2]);
             }
-            callback(response);
+            callback(undefined, response);
         });
 
     });
