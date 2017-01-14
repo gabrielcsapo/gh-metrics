@@ -23,8 +23,8 @@
 > programatic
 
 ```javascript
-var metrics = require('github-metrics');
-metrics({
+const Metrics = require('github-metrics');
+Metrics({
     user: '',
     token: '',
     keys: [],
