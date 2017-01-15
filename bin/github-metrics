@@ -24,14 +24,18 @@ if (Program.user) {
         keys: Program.keys,
         sort: Program.sort,
         sortAsc: Program.asc ? true : false
-    }, function(response) {
+    }, function(err, metrics) {
+        if(err) {
+            return console.error(err);
+        }
+
         const keys = Program.keys;
         const table = [keys];
 
-        response.forEach(function(repo) {
+        metrics.forEach(function(m) {
             let row = [];
             keys.forEach(function(key) {
-                row.push(repo[key] ? JSON.stringify(repo[key]) : repo[key]);
+                row.push(m[key] ? JSON.stringify(m[key]) : m[key]);
             });
             table.push(row);
         });

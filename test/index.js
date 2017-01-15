@@ -16,6 +16,7 @@ test('github-metrics', (t) => {
             sortAsc: false
         }, (err, result) => {
             if(err) {
+                t.ok(result === undefined);
                 t.pass('the function threw an errorr');
             }
         })

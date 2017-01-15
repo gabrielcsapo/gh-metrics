@@ -30,7 +30,7 @@ Metrics({
     keys: [],
     sort: '',
     sortAsc: false
-}, function(res) { });
+}, function(err, metrics) { });
 ```
 
 ### Keys Available

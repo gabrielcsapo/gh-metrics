@@ -1,12 +1,12 @@
 {
   "name": "github-metrics",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "a repo to track github stats across different users github repos",
   "main": "index.js",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint .;",
-    "test": "./node_modules/.bin/tape test",
-    "coverage": "./node_modules/.bin/tap test/*.js --coverage"
+    "lint": "eslint .;",
+    "test": "npm run lint && tape test",
+    "coverage": "tap test/*.js --coverage"
   },
   "bin": {
     "github-metrics": "bin/github-metrics"
