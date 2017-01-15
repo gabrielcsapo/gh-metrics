@@ -3,6 +3,7 @@
 
 [![Npm Version](https://img.shields.io/npm/v/github-metrics.svg)](https://www.npmjs.com/package/github-metrics)
 [![Build Status](https://travis-ci.org/gabrielcsapo/github-metrics.svg?branch=master)](https://travis-ci.org/gabrielcsapo/github-metrics)
+[![Coverage Status](https://coveralls.io/repos/github/gabrielcsapo/github-metrics/badge.svg?branch=master)](https://coveralls.io/github/gabrielcsapo/github-metrics?branch=master)
 [![Dependency Status](https://david-dm.org/gabrielcsapo/github-metrics.svg)](https://david-dm.org/gabrielcsapo/github-metrics)
 [![devDependency Status](https://david-dm.org/gabrielcsapo/github-metrics/dev-status.svg)](https://david-dm.org/gabrielcsapo/github-metrics#info=devDependencies)
 [![npm](https://img.shields.io/npm/dt/github-metrics.svg)]()
