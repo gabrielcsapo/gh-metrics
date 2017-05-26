@@ -135,6 +135,7 @@ Metrics({
 ## Example
 
 `github-metrics --user gabrielcsapo --keys 'full_name, homepage, commits, open_issues_count, days_stagnant, health' --sort 'days_stagnant' --asc --table`
+
 | full_name                                       | homepage                                       | commits | open_issues_count | days_stagnant | health |
 | ----------------------------------------------- | ---------------------------------------------- | ------- | ----------------- | ------------- | ------ |
 | "gabrielcsapo/json-ex"                          | "http://www.gabrielcsapo.com/json-ex/"         | 6       | 0                 | 1             | "🌞"   |
