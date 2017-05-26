@@ -2,6 +2,7 @@
 
 const Github = require('octonode');
 const Async = require('async');
+const Table = require('markdown-table');
 
 module.exports = (options, callback) => {
     const user = options.user;
@@ -9,12 +10,30 @@ module.exports = (options, callback) => {
     const keys = options.keys;
     const sort = options.sort;
     const sortAsc = options.sortAsc;
+    const table = options.table;
     const client = Github.client(token);
     const ghuser = client.user(user);
+    const after = (error, result) => {
+      if(error) { return callback(error, undefined); }
+      if(!table) {
+        return callback(undefined, JSON.stringify(result, null, 4));
+      } else {
+        const table = [keys];
+
+        result.forEach(function(m) {
+            let row = [];
+            keys.forEach(function(key) {
+                row.push(m[key] ? JSON.stringify(m[key]) : m[key]);
+            });
+            table.push(row);
+        });
+        return callback(undefined, Table(table));
+      }
+    }
 
     ghuser.repos((err, repos) => {
         if (err) {
-            return callback(err);
+            return after(err);
         }
 
         let response = [];
@@ -125,7 +144,7 @@ module.exports = (options, callback) => {
             }
         }, (err) => {
             if (err) {
-                return callback(err, undefined);
+                return after(err, undefined);
             }
             // Lets do some sorting
             if(sort) {
@@ -140,7 +159,7 @@ module.exports = (options, callback) => {
                 })
                 .map((o) => o[2]);
             }
-            callback(undefined, response);
+            after(undefined, response);
         });
 
     });

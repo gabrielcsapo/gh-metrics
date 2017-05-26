@@ -3,7 +3,6 @@
 
 const Program = require('commander');
 const Metrics = require('../index.js');
-const Table = require('markdown-table');
 
 Program
     .version(require('../package.json').version)
@@ -12,10 +11,11 @@ Program
     .option('-k, --keys [keys]', 'keys to be passed to make the table based on the comma seperated keys you provide.')
     .option('-s, --sort [sort]', 'key to be used to sort against the returned value')
     .option('-a, --asc', 'by default the sorting is descending if this is selected it will be ascending')
+    .option('--table', 'output a table of the data')
     .parse(process.argv);
 
 if (Program.user) {
-    Program.keys = Program.keys.split(',').map((k) => {
+    Program.keys = Program.keys && Program.keys.split(',').map((k) => {
         return k.trim();
     }) || ['full_name', 'homepage', 'description', 'created_at', 'size'];
     Metrics({
@@ -23,23 +23,13 @@ if (Program.user) {
         token: Program.token,
         keys: Program.keys,
         sort: Program.sort,
-        sortAsc: Program.asc ? true : false
+        sortAsc: Program.asc ? true : false,
+        table: Program.table
     }, function(err, metrics) {
         if(err) {
             return console.error(err);
         }
-
-        const keys = Program.keys;
-        const table = [keys];
-
-        metrics.forEach(function(m) {
-            let row = [];
-            keys.forEach(function(key) {
-                row.push(m[key] ? JSON.stringify(m[key]) : m[key]);
-            });
-            table.push(row);
-        });
-        console.log(Table(table));
+        console.log(metrics);
     });
 } else {
     console.error('please specify a user\n');
