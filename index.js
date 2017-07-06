@@ -11,6 +11,7 @@ module.exports = (options, callback) => {
     const sort = options.sort;
     const sortAsc = options.sortAsc;
     const table = options.table;
+    const limit = options.limit || 20;
     const client = Github.client(token);
     const ghuser = client.user(user);
     const after = (error, result) => {
@@ -31,7 +32,10 @@ module.exports = (options, callback) => {
       }
     }
 
-    ghuser.repos((err, repos) => {
+    ghuser.repos({
+        page: 0,
+        per_page: limit,
+      }, (err, repos) => {
         if (err) {
             return after(err);
         }

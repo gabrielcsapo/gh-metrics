@@ -20,16 +20,18 @@
 ```
 Usage: github-metrics [options]
 
+
 Options:
 
-  -h, --help           output usage information
   -V, --version        output the version number
   -u, --user [user]    the name of the user that you want to get metrics for.
   -t, --token [token]  github access token to make requests.
   -k, --keys [keys]    keys to be passed to make the table based on the comma seperated keys you provide.
   -s, --sort [sort]    key to be used to sort against the returned value
   -a, --asc            by default the sorting is descending if this is selected it will be ascending
+  -l, --limit [limit]  limit the number of repos that are being returned
   --table              output a table of the data
+  -h, --help           output usage information
 ```
 
 > examples
@@ -47,7 +49,8 @@ Metrics({
     token: '',
     keys: [],
     sort: '',
-    sortAsc: false
+    sortAsc: false,
+    limit: 10
 }, function(err, metrics) { });
 ```
 
