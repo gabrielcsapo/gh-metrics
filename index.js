@@ -3,6 +3,7 @@
 const Github = require('octonode');
 const Async = require('async');
 const Table = require('markdown-table');
+const debug = require('debug')('github-metrics')
 
 module.exports = (options, callback) => {
     const user = options.user;
@@ -54,7 +55,8 @@ module.exports = (options, callback) => {
                         if (keys.indexOf('languages') > -1) {
                             ghrepo.languages((err, languages) => {
                                 if (err) {
-                                    return callback(err);
+                                    debug(err);
+                                    return callback();
                                 }
                                 repo.languages = languages;
                                 callback();
@@ -67,7 +69,8 @@ module.exports = (options, callback) => {
                         if (keys.indexOf('last_contribution') > -1) {
                             ghrepo.commits((err, commits) => {
                                 if (err) {
-                                    return callback(err);
+                                    debug(err);
+                                    return callback();
                                 }
                                 repo.last_contribution = commits[0].commit.author.date;
                                 callback();
@@ -80,7 +83,8 @@ module.exports = (options, callback) => {
                         if (keys.indexOf('days_stagnant') > -1) {
                             ghrepo.commits((err, commits) => {
                                 if (err) {
-                                    return callback(err);
+                                    debug(err);
+                                    return callback();
                                 }
                                 let last = new Date(commits[0].commit.author.date);
                                 let today = new Date();
@@ -96,14 +100,15 @@ module.exports = (options, callback) => {
                         if (keys.indexOf('commits') > -1) {
                             ghrepo.contributors((err, contributors) => {
                                 if (err) {
-                                    return callback(err);
+                                    debug(err);
+                                    return callback();
                                 }
                                 repo.commits = contributors.map((a) => {
                                         return a.contributions;
                                     })
                                     .reduce((a, b) => {
                                         return a + b;
-                                    });
+                                    }, 0);
                                 callback();
                             });
                         } else {
@@ -114,7 +119,8 @@ module.exports = (options, callback) => {
                         if (keys.indexOf('health') > -1) {
                             ghrepo.commits((err, commits) => {
                                 if (err) {
-                                    return callback(err);
+                                    debug(err);
+                                    return callback();
                                 }
                                 let last = new Date(commits[0].commit.author.date);
                                 let today = new Date();
@@ -139,6 +145,7 @@ module.exports = (options, callback) => {
                     }
                 ], (err) => {
                     if (err) {
+                        debug(err);
                         return callback(err);
                     }
                     callback();
@@ -148,6 +155,7 @@ module.exports = (options, callback) => {
             }
         }, (err) => {
             if (err) {
+                debug(err);
                 return after(err, undefined);
             }
             // Lets do some sorting

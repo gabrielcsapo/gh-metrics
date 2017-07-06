@@ -40,6 +40,12 @@ Options:
 
 `github-metrics --user gabrielcsapo --token {token}` // this will make the call with an authenticated token
 
+Debugging any errors that occur during your call please preface with `DEBUG=github-metrics` and example would look like
+
+```
+DEBUG=github-metrics github-metrics --user gabrielcsapo
+```
+
 > programatic
 
 ```javascript
