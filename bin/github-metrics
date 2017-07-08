@@ -11,6 +11,7 @@ Program
     .option('-k, --keys [keys]', 'keys to be passed to make the table based on the comma seperated keys you provide.')
     .option('-s, --sort [sort]', 'key to be used to sort against the returned value')
     .option('-a, --asc', 'by default the sorting is descending if this is selected it will be ascending')
+    .option('-p, --page [page]', 'the page to start the search at, by default the limit is only 100, so pagination is necessary')
     .option('-l, --limit [limit]', 'limit the number of repos that are being returned')
     .option('--table', 'output a table of the data')
     .parse(process.argv);
@@ -26,7 +27,8 @@ if (Program.user) {
         sort: Program.sort,
         sortAsc: Program.asc ? true : false,
         table: Program.table,
-        limit: Program.limit
+        limit: Program.limit,
+        page: Program.page
     }, function(err, metrics) {
         if(err) {
             return console.error(err);

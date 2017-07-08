@@ -1,3 +1,11 @@
+# 0.4.4 (07/07/2017)
+
+- moves from octonode to node-github (more support)
+- adds topic option
+- fixes a bug where if the `name` key was included, some APIs couldn't be called
+- adds deprecated option
+- adds page option (for values that overflow 100)
+
 # 0.4.3 (07/06/2017)
 
 - fixes bug with reduce not having a default value
