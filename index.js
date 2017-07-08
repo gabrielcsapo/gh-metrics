@@ -1,6 +1,6 @@
 "use strict"
 
-const Github = require('octonode');
+const Github = require('github');
 const Async = require('async');
 const Table = require('markdown-table');
 const debug = require('debug')('github-metrics')
@@ -12,9 +12,23 @@ module.exports = (options, callback) => {
     const sort = options.sort;
     const sortAsc = options.sortAsc;
     const table = options.table;
+    const page = options.page || 0;
     const limit = options.limit || 20;
-    const client = Github.client(token);
-    const ghuser = client.user(user);
+    const client = Github({
+        debug: false,
+        protocol: 'https',
+        host: 'api.github.com',
+        headers: {
+            "Accept": ["application/vnd.github.mercy-preview+json"]
+        }
+    });
+    if(token) {
+        client.authenticate({
+            type: 'token',
+            token
+        });
+    }
+
     const after = (error, result) => {
       if(error) { return callback(error, undefined); }
       if(!table) {
@@ -33,31 +47,39 @@ module.exports = (options, callback) => {
       }
     }
 
-    ghuser.repos({
-        page: 0,
+    client.repos.getForUser({
+        username: user,
+        page: page,
         per_page: limit,
-      }, (err, repos) => {
+    }, (err, data) => {
         if (err) {
             return after(err);
         }
+        const repos = data.data;
 
         let response = [];
         Async.forEachOf(repos, (repo, value, callback) => {
             if (repo.fork == false) {
+                const rawRepo = Object.assign({}, repo); // to get keys that might not be included in what the user wants but we need
+
                 Object.keys(repo).forEach((k) => {
                     if (keys.indexOf(k) == -1) {
                         delete repo[k];
                     }
                 });
-                var ghrepo = client.repo(repo.full_name);
                 Async.waterfall([
                      (callback) => {
                         if (keys.indexOf('languages') > -1) {
-                            ghrepo.languages((err, languages) => {
+                            client.repos.getLanguages({
+                                owner: user,
+                                repo: rawRepo.name
+                            }, (err, data) => {
                                 if (err) {
                                     debug(err);
                                     return callback();
                                 }
+                                const languages = data.data;
+
                                 repo.languages = languages;
                                 callback();
                             });
@@ -67,11 +89,16 @@ module.exports = (options, callback) => {
                     },
                     (callback) => {
                         if (keys.indexOf('last_contribution') > -1) {
-                            ghrepo.commits((err, commits) => {
+                            client.repos.getCommits({
+                                owner: user,
+                                repo: rawRepo.name
+                            }, (err, data) => {
                                 if (err) {
                                     debug(err);
                                     return callback();
                                 }
+                                const commits = data.data;
+
                                 repo.last_contribution = commits[0].commit.author.date;
                                 callback();
                             });
@@ -81,11 +108,16 @@ module.exports = (options, callback) => {
                     },
                     (callback) => {
                         if (keys.indexOf('days_stagnant') > -1) {
-                            ghrepo.commits((err, commits) => {
+                            client.repos.getCommits({
+                                owner: user,
+                                repo: rawRepo.name
+                            }, (err, data) => {
                                 if (err) {
                                     debug(err);
                                     return callback();
                                 }
+                                const commits = data.data;
+
                                 let last = new Date(commits[0].commit.author.date);
                                 let today = new Date();
                                 let diff = Math.abs(last - today);
@@ -98,11 +130,16 @@ module.exports = (options, callback) => {
                     },
                     (callback) => {
                         if (keys.indexOf('commits') > -1) {
-                            ghrepo.contributors((err, contributors) => {
+                            client.repos.getContributors({
+                                owner: user,
+                                repo: rawRepo.name
+                            }, (err, data) => {
                                 if (err) {
                                     debug(err);
                                     return callback();
                                 }
+                                const contributors = data.data;
+
                                 repo.commits = contributors.map((a) => {
                                         return a.contributions;
                                     })
@@ -117,11 +154,16 @@ module.exports = (options, callback) => {
                     },
                     (callback) => {
                         if (keys.indexOf('health') > -1) {
-                            ghrepo.commits((err, commits) => {
+                            client.repos.getCommits({
+                                owner: user,
+                                repo: rawRepo.name
+                            }, (err, data) => {
                                 if (err) {
                                     debug(err);
                                     return callback();
                                 }
+                                const commits = data.data;
+
                                 let last = new Date(commits[0].commit.author.date);
                                 let today = new Date();
                                 let diff = Math.abs(last - today);
@@ -142,7 +184,44 @@ module.exports = (options, callback) => {
                             response.push(repo);
                             callback();
                         }
-                    }
+                    },
+                    (callback) => {
+                       if (keys.indexOf('topics') > -1) {
+                           repo.topics = repo.topics.join(', ');
+                           callback();
+                       } else {
+                           callback();
+                       }
+                   },
+                   (callback) => {
+                       if (keys.indexOf('deprecated') > -1) {
+                           // First check for the deprecated topics to exist
+                           if(rawRepo.topics && rawRepo.topics.indexOf('deprecated') > -1) {
+                               repo.deprecated = 'true';
+                               return callback();
+                           }
+
+                           // Fallback to readme checking in case it was not found in the topics
+                           client.repos.getContent({
+                               owner: user,
+                               repo: rawRepo.name,
+                               path: 'README.md'
+                           }, (err, data) => {
+                               if(err) {
+                                   debug(err);
+                                   return callback();
+                               }
+                               const readme = new Buffer(data.data.content, data.data.encoding).toString('utf8')
+                               if(readme.match(/deprecated/ig)) {
+                                  repo.deprecated = 'true';
+                               }
+
+                               callback();
+                           });
+                       } else {
+                           callback();
+                       }
+                   },
                 ], (err) => {
                     if (err) {
                         debug(err);
@@ -158,7 +237,7 @@ module.exports = (options, callback) => {
                 debug(err);
                 return after(err, undefined);
             }
-            // Lets do some sorting
+            // Let's do some sorting
             if(sort) {
                 response = response
                 .map((r, i) => [r[sort], i, r])

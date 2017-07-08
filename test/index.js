@@ -40,6 +40,7 @@ test('github-metrics', (t) => {
             sort: 'commits',
             sortAsc: true,
         }, (err, result) => {
+            if(err) { t.fail(err); }
             // Check if the keys on the sub objects
             // are the same as the keys provided
             const metrics = JSON.parse(result);
@@ -74,6 +75,8 @@ test('github-metrics', (t) => {
           sortAsc: true,
           table: true
       }, (err, result) => {
+          if(err) { t.fail(err); }
+          
           try {
             JSON.parse(result);
             t.fail('should not be able to parse result');
