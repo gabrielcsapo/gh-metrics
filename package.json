@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint .;",
     "test": "npm run lint && tape test",
-    "coverage": "tap test/*.js --coverage"
+    "coverage": "tap test/*.js --coverage",
+    "generate-docs": "jsdoc --configure .jsdoc.json --verbose"
   },
   "bin": {
     "github-metrics": "bin/github-metrics"
@@ -30,6 +31,8 @@
   },
   "devDependencies": {
     "eslint": "^4.1.1",
+    "jsdoc": "^3.5.3",
+    "minami": "^1.2.3",
     "tap": "^10.3.2",
     "tape": "^4.6.3"
   },
