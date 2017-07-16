@@ -1,4 +1,6 @@
 # github-metrics
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/gabrielcsapo/github-metrics.svg)](https://greenkeeper.io/)
 > a repo to track github stats across different users github repos
 
 [![Npm Version](https://img.shields.io/npm/v/github-metrics.svg)](https://www.npmjs.com/package/github-metrics)
