@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-github-metrics.html">github-metrics</a></span></li>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>github-metrics</h1><blockquote>
+<p>a repo to track github stats across different users github repos</p>
+</blockquote>
+<p><a href="https://www.npmjs.com/package/github-metrics"><img src="https://img.shields.io/npm/v/github-metrics.svg" alt="Npm Version"></a>
+<a href="https://travis-ci.org/gabrielcsapo/github-metrics"><img src="https://travis-ci.org/gabrielcsapo/github-metrics.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/github/gabrielcsapo/github-metrics?branch=master"><img src="https://coveralls.io/repos/github/gabrielcsapo/github-metrics/badge.svg?branch=master" alt="Coverage Status"></a>
+<a href="https://david-dm.org/gabrielcsapo/github-metrics"><img src="https://david-dm.org/gabrielcsapo/github-metrics.svg" alt="Dependency Status"></a>
+<a href="https://david-dm.org/gabrielcsapo/github-metrics#info=devDependencies"><img src="https://david-dm.org/gabrielcsapo/github-metrics/dev-status.svg" alt="devDependency Status"></a>
+<a href=""><img src="https://img.shields.io/npm/dt/github-metrics.svg" alt="npm"></a>
+<a href=""><img src="https://img.shields.io/npm/dm/github-metrics.svg" alt="npm"></a></p>
+<h2>Installation</h2><p><code>npm install github-metrics -g</code></p>
+<h2>Usage</h2><blockquote>
+<p>command-line</p>
+</blockquote>
+<pre class="prettyprint source"><code>Usage: github-metrics [options]
+
+
+Options:
+
+  -V, --version        output the version number
+  -u, --user [user]    the name of the user that you want to get metrics for.
+  -t, --token [token]  github access token to make requests.
+  -k, --keys [keys]    keys to be passed to make the table based on the comma seperated keys you provide.
+  -s, --sort [sort]    key to be used to sort against the returned value
+  -a, --asc            by default the sorting is descending if this is selected it will be ascending
+  -l, --limit [limit]  limit the number of repos that are being returned
+  --table              output a table of the data
+  -h, --help           output usage information</code></pre><blockquote>
+<p>examples</p>
+</blockquote>
+<p><code>github-metrics --user gabrielcsapo</code> // this will call github using the public api</p>
+<p><code>github-metrics --user gabrielcsapo --token {token}</code> // this will make the call with an authenticated token</p>
+<p>Debugging any errors that occur during your call please preface with <code>DEBUG=github-metrics</code> and example would look like</p>
+<pre class="prettyprint source"><code>DEBUG=github-metrics github-metrics --user gabrielcsapo</code></pre><blockquote>
+<p>programatic</p>
+</blockquote>
+<pre class="prettyprint source lang-javascript"><code>const Metrics = require('github-metrics');
+Metrics({
+    user: '',
+    token: '',
+    keys: [],
+    sort: '',
+    sortAsc: false,
+    limit: 10
+}, function(err, metrics) { });</code></pre><h3>Keys Available</h3><pre class="prettyprint source lang-javascript"><code>[
+  'archive_url',
+  'assignees_url',
+  'blobs_url',
+  'branches_url',
+  'clone_url',
+  'collaborators_url',
+  'comments_url',
+  'commits',
+  'commits_url',
+  'compare_url',
+  'contents_url',
+  'contributors_url',
+  'created_at',
+  'days_stagnant',
+  'default_branch',
+  'deployments_url',
+  'description',
+  'deprecated',
+  'downloads_url',
+  'events_url',
+  'fork',
+  'forks',
+  'forks_count',
+  'forks_url',
+  'full_name',
+  'git_commits_url',
+  'git_refs_url',
+  'git_tags_url',
+  'git_url',
+  'has_downloads',
+  'has_issues',
+  'has_pages',
+  'has_wiki',
+  'health',
+  'homepage',
+  'hooks_url',
+  'html_url',
+  'id',
+  'issue_comment_url',
+  'issue_events_url',
+  'issues_url',
+  'keys_url',
+  'labels_url',
+  'language',
+  'languages',
+  'languages_url',
+  'last_contribution',
+  'merges_url',
+  'milestones_url',
+  'mirror_url',
+  'name',
+  'notifications_url',
+  'open_issues',
+  'open_issues_count',
+  'owner',
+  'permissions',
+  'private',
+  'pulls_url',
+  'pushed_at',
+  'releases_url',
+  'size',
+  'ssh_url',
+  'stargazers_count',
+  'stargazers_url',
+  'statuses_url',
+  'subscribers_url',
+  'subscription_url',
+  'svn_url',
+  'tags_url',
+  'teams_url',
+  'trees_url',
+  'topics',
+  'updated_at',
+  'url',
+  'watchers',
+  'watchers_count'
+ ]</code></pre><h2>Example</h2><p><code>github-metrics --user gabrielcsapo --keys 'full_name, homepage, commits, open_issues_count, days_stagnant, health' --sort 'days_stagnant' --asc --table</code></p>
+<table>
+<thead>
+<tr>
+<th>full_name</th>
+<th>homepage</th>
+<th>commits</th>
+<th>open_issues_count</th>
+<th>days_stagnant</th>
+<th>health</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&quot;gabrielcsapo/json-ex&quot;</td>
+<td>&quot;http://www.gabrielcsapo.com/json-ex/&quot;</td>
+<td>6</td>
+<td>0</td>
+<td>1</td>
+<td>&quot;🌞&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/node-git-server&quot;</td>
+<td>&quot;http://www.gabrielcsapo.com/node-git-server/&quot;</td>
+<td>27</td>
+<td>2</td>
+<td>6</td>
+<td>&quot;🌞&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/node-notebook&quot;</td>
+<td>&quot;http://www.gabrielcsapo.com/node-notebook/&quot;</td>
+<td>144</td>
+<td>2</td>
+<td>7</td>
+<td>&quot;🌞&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/gabrielcsapo.github.io&quot;</td>
+<td>&quot;http://www.gabrielcsapo.com&quot;</td>
+<td>77</td>
+<td>2</td>
+<td>7</td>
+<td>&quot;🌞&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/psychic-ui&quot;</td>
+<td>&quot;http://www.gabrielcsapo.com/psychic-ui/&quot;</td>
+<td>130</td>
+<td>1</td>
+<td>10</td>
+<td>&quot;🌞&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/node-coverage-server&quot;</td>
+<td>&quot;https://node-coverage-server.herokuapp.com/&quot;</td>
+<td>80</td>
+<td>7</td>
+<td>21</td>
+<td>&quot;🌞&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/espyjs&quot;</td>
+<td></td>
+<td>6</td>
+<td>0</td>
+<td>27</td>
+<td>&quot;🌞&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/psychic&quot;</td>
+<td>&quot;http://www.gabrielcsapo.com/psychic/&quot;</td>
+<td>8</td>
+<td>2</td>
+<td>45</td>
+<td>&quot;⛅️&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/monotime&quot;</td>
+<td>&quot;http://www.gabrielcsapo.com/monotime/&quot;</td>
+<td>5</td>
+<td>0</td>
+<td>51</td>
+<td>&quot;⛅️&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/node-tester&quot;</td>
+<td></td>
+<td>4</td>
+<td>0</td>
+<td>95</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/prompt&quot;</td>
+<td></td>
+<td>17</td>
+<td>0</td>
+<td>99</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/node-distribute&quot;</td>
+<td>&quot;http://www.gabrielcsapo.com/node-distribute/&quot;</td>
+<td>124</td>
+<td>7</td>
+<td>101</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/github-metrics&quot;</td>
+<td></td>
+<td>40</td>
+<td>2</td>
+<td>131</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/granary-server&quot;</td>
+<td>&quot;http://granaryjs.com&quot;</td>
+<td>168</td>
+<td>1</td>
+<td>135</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/compress-object&quot;</td>
+<td>&quot;http://www.gabrielcsapo.com/compress-object/&quot;</td>
+<td>22</td>
+<td>1</td>
+<td>141</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/node-chat-rooms&quot;</td>
+<td>&quot;http://www.gabrielcsapo.com/node-chat-rooms/&quot;</td>
+<td>71</td>
+<td>1</td>
+<td>148</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/npm-what&quot;</td>
+<td></td>
+<td>33</td>
+<td>3</td>
+<td>149</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/grunt-screenshot&quot;</td>
+<td></td>
+<td>53</td>
+<td>1</td>
+<td>170</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/node-dashboard&quot;</td>
+<td></td>
+<td>79</td>
+<td>2</td>
+<td>259</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/node-flat-db&quot;</td>
+<td></td>
+<td>226</td>
+<td>0</td>
+<td>264</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/node-timecapsule&quot;</td>
+<td></td>
+<td>7</td>
+<td>0</td>
+<td>271</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/granary&quot;</td>
+<td>&quot;http://granaryjs.com&quot;</td>
+<td>65</td>
+<td>0</td>
+<td>291</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/node-document-parser&quot;</td>
+<td></td>
+<td>10</td>
+<td>0</td>
+<td>301</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/mocha-markdown-extended-reporter&quot;</td>
+<td></td>
+<td>2</td>
+<td>0</td>
+<td>317</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/granary-sample&quot;</td>
+<td></td>
+<td>5</td>
+<td>0</td>
+<td>376</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+<tr>
+<td>&quot;gabrielcsapo/dobby&quot;</td>
+<td></td>
+<td>11</td>
+<td>0</td>
+<td>645</td>
+<td>&quot;🌩&quot;</td>
+</tr>
+</tbody>
+</table></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Sun Jul 16 2017 13:03:46 GMT-0700 (PDT) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
