@@ -14,6 +14,9 @@ Program
     .option('-p, --page [page]', 'the page to start the search at, by default the limit is only 100, so pagination is necessary')
     .option('-l, --limit [limit]', 'limit the number of repos that are being returned')
     .option('--table', 'output a table of the data')
+    .option('-gp, --github-protocol [protocol]', 'the protocol to query github')
+    .option('-gh, --github-host [url]', 'the url of the github instance to query')
+    .option('-gd, --github-debug', 'a flag that allows debug logs from the github client')
     .parse(process.argv);
 
 if (Program.user) {
@@ -28,7 +31,12 @@ if (Program.user) {
         sortAsc: Program.asc ? true : false,
         table: Program.table,
         limit: Program.limit,
-        page: Program.page
+        page: Program.page,
+        github: {
+          protocol: Program.githubProtocol || 'https',
+          host: Program.githubHost || 'api.github.com',
+          debug: Program.githubDebug ? true : false
+        }
     }, function(err, metrics) {
         if(err) {
             return console.error(err);

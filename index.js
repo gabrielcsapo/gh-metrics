@@ -19,6 +19,10 @@ const debug = require('debug')('gh-metrics')
  * @param  {Boolean}  options.table - a boolean variable to represent if the metrics will returned as a table instead of JSON
  * @param  {Integer}  options.page - the starting page that metrics will start on
  * @param  {Integer}  options.limit - the amount of results to get metrics on, default is 20, max is 100
+ * @param  {Object}   options.github - in order to change the instance of github being queried
+ * @param  {Boolean}   options.github.debug - a flag set to get debug information from github
+ * @param  {String}   options.github.protocol - can be http or https
+ * @param  {String}   options.github.host - the host of the github instance to query
  * @param  {Function} callback - callback to be executed when metrics have been collected
  */
 module.exports = function metrics(options, callback) {
@@ -30,10 +34,12 @@ module.exports = function metrics(options, callback) {
     const table = options.table;
     const page = options.page || 0;
     const limit = options.limit || 20;
+    const github = options.github || {};
+
     const client = Github({
-        debug: false,
-        protocol: 'https',
-        host: 'api.github.com',
+        debug: github.deub || false,
+        protocol: github.protocol || 'https',
+        host: github.host || 'api.github.com',
         headers: {
             "Accept": ["application/vnd.github.mercy-preview+json"]
         }
