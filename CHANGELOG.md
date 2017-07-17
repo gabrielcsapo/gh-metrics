@@ -1,4 +1,8 @@
-# 0.5.0 (07/07/2017)
+# Unreleased
+
+- add the option to query another instance of github rather than just `github.com`
+
+# 0.5.0 (07/16/2017)
 
 - moved name to `gh-metrics`!
 
