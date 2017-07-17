@@ -1,8 +1,8 @@
 # gh-metrics
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/gabrielcsapo/gh-metrics.svg)](https://greenkeeper.io/)
-> a repo to track github stats across different users github repos
+> a cli to track github stats across different users github repos
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/gabrielcsapo/gh-metrics.svg)](https://greenkeeper.io/)
 [![Npm Version](https://img.shields.io/npm/v/gh-metrics.svg)](https://www.npmjs.com/package/gh-metrics)
 [![Build Status](https://travis-ci.org/gabrielcsapo/gh-metrics.svg?branch=master)](https://travis-ci.org/gabrielcsapo/gh-metrics)
 [![Coverage Status](https://coveralls.io/repos/github/gabrielcsapo/gh-metrics/badge.svg?branch=master)](https://coveralls.io/github/gabrielcsapo/gh-metrics?branch=master)

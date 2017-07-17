@@ -1,7 +1,7 @@
 {
   "name": "gh-metrics",
   "version": "0.5.0",
-  "description": "a repo to track github stats across different users github repos",
+  "description": "a cli to track github stats across different users github repos",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .;",
