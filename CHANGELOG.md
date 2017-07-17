@@ -1,4 +1,4 @@
-# Unreleased
+# 0.5.1 (07/17/2017)
 
 - add the option to query another instance of github rather than just `github.com`
 
