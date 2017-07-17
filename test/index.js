@@ -4,7 +4,7 @@ const test = require('tape');
 const Metrics = require('../index');
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
-test('github-metrics', (t) => {
+test('gh-metrics', (t) => {
     t.plan(3);
 
     t.test('should throw error if there is no user specificed', (t) => {
@@ -76,7 +76,7 @@ test('github-metrics', (t) => {
           table: true
       }, (err, result) => {
           if(err) { t.fail(err); }
-          
+
           try {
             JSON.parse(result);
             t.fail('should not be able to parse result');

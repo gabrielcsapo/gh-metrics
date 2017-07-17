@@ -1,26 +1,26 @@
-# github-metrics
+# gh-metrics
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/gabrielcsapo/github-metrics.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/gabrielcsapo/gh-metrics.svg)](https://greenkeeper.io/)
 > a repo to track github stats across different users github repos
 
-[![Npm Version](https://img.shields.io/npm/v/github-metrics.svg)](https://www.npmjs.com/package/github-metrics)
-[![Build Status](https://travis-ci.org/gabrielcsapo/github-metrics.svg?branch=master)](https://travis-ci.org/gabrielcsapo/github-metrics)
-[![Coverage Status](https://coveralls.io/repos/github/gabrielcsapo/github-metrics/badge.svg?branch=master)](https://coveralls.io/github/gabrielcsapo/github-metrics?branch=master)
-[![Dependency Status](https://david-dm.org/gabrielcsapo/github-metrics.svg)](https://david-dm.org/gabrielcsapo/github-metrics)
-[![devDependency Status](https://david-dm.org/gabrielcsapo/github-metrics/dev-status.svg)](https://david-dm.org/gabrielcsapo/github-metrics#info=devDependencies)
-[![npm](https://img.shields.io/npm/dt/github-metrics.svg)]()
-[![npm](https://img.shields.io/npm/dm/github-metrics.svg)]()
+[![Npm Version](https://img.shields.io/npm/v/gh-metrics.svg)](https://www.npmjs.com/package/gh-metrics)
+[![Build Status](https://travis-ci.org/gabrielcsapo/gh-metrics.svg?branch=master)](https://travis-ci.org/gabrielcsapo/gh-metrics)
+[![Coverage Status](https://coveralls.io/repos/github/gabrielcsapo/gh-metrics/badge.svg?branch=master)](https://coveralls.io/github/gabrielcsapo/gh-metrics?branch=master)
+[![Dependency Status](https://david-dm.org/gabrielcsapo/gh-metrics.svg)](https://david-dm.org/gabrielcsapo/gh-metrics)
+[![devDependency Status](https://david-dm.org/gabrielcsapo/gh-metrics/dev-status.svg)](https://david-dm.org/gabrielcsapo/gh-metrics#info=devDependencies)
+[![npm](https://img.shields.io/npm/dt/gh-metrics.svg)]()
+[![npm](https://img.shields.io/npm/dm/gh-metrics.svg)]()
 
 ## Installation
 
-`npm install github-metrics -g`
+`npm install gh-metrics -g`
 
 ## Usage
 
 > command-line
 
 ```
-Usage: github-metrics [options]
+Usage: gh-metrics [options]
 
 
 Options:
@@ -38,20 +38,20 @@ Options:
 
 > examples
 
-`github-metrics --user gabrielcsapo` // this will call github using the public api
+`gh-metrics --user gabrielcsapo` // this will call github using the public api
 
-`github-metrics --user gabrielcsapo --token {token}` // this will make the call with an authenticated token
+`gh-metrics --user gabrielcsapo --token {token}` // this will make the call with an authenticated token
 
-Debugging any errors that occur during your call please preface with `DEBUG=github-metrics` and example would look like
+Debugging any errors that occur during your call please preface with `DEBUG=gh-metrics` and example would look like
 
 ```
-DEBUG=github-metrics github-metrics --user gabrielcsapo
+DEBUG=gh-metrics gh-metrics --user gabrielcsapo
 ```
 
 > programatic
 
 ```javascript
-const Metrics = require('github-metrics');
+const Metrics = require('gh-metrics');
 Metrics({
     user: '',
     token: '',
@@ -147,7 +147,7 @@ Metrics({
 
 ## Example
 
-`github-metrics --user gabrielcsapo --keys 'full_name, homepage, commits, open_issues_count, days_stagnant, health' --sort 'days_stagnant' --asc --table`
+`gh-metrics --user gabrielcsapo --keys 'full_name, homepage, commits, open_issues_count, days_stagnant, health' --sort 'days_stagnant' --asc --table`
 
 | full_name                                       | homepage                                       | commits | open_issues_count | days_stagnant | health |
 | ----------------------------------------------- | ---------------------------------------------- | ------- | ----------------- | ------------- | ------ |
@@ -163,7 +163,7 @@ Metrics({
 | "gabrielcsapo/node-tester"                      |                                                | 4       | 0                 | 95            | "🌩"   |
 | "gabrielcsapo/prompt"                           |                                                | 17      | 0                 | 99            | "🌩"   |
 | "gabrielcsapo/node-distribute"                  | "http://www.gabrielcsapo.com/node-distribute/" | 124     | 7                 | 101           | "🌩"   |
-| "gabrielcsapo/github-metrics"                   |                                                | 40      | 2                 | 131           | "🌩"   |
+| "gabrielcsapo/gh-metrics"                   |                                                | 40      | 2                 | 131           | "🌩"   |
 | "gabrielcsapo/granary-server"                   | "http://granaryjs.com"                         | 168     | 1                 | 135           | "🌩"   |
 | "gabrielcsapo/compress-object"                  | "http://www.gabrielcsapo.com/compress-object/" | 22      | 1                 | 141           | "🌩"   |
 | "gabrielcsapo/node-chat-rooms"                  | "http://www.gabrielcsapo.com/node-chat-rooms/" | 71      | 1                 | 148           | "🌩"   |

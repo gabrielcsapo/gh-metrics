@@ -24,7 +24,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-github-metrics.html">github-metrics</a></span></li>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-gh-metrics.html">gh-metrics</a></span></li>
 </nav>
 
 <div id="main">
@@ -48,21 +48,22 @@
 
 
     <section class="readme">
-        <article><h1>github-metrics</h1><blockquote>
+        <article><h1>gh-metrics</h1><p><a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/gabrielcsapo/gh-metrics.svg" alt="Greenkeeper badge"></a></p>
+<blockquote>
 <p>a repo to track github stats across different users github repos</p>
 </blockquote>
-<p><a href="https://www.npmjs.com/package/github-metrics"><img src="https://img.shields.io/npm/v/github-metrics.svg" alt="Npm Version"></a>
-<a href="https://travis-ci.org/gabrielcsapo/github-metrics"><img src="https://travis-ci.org/gabrielcsapo/github-metrics.svg?branch=master" alt="Build Status"></a>
-<a href="https://coveralls.io/github/gabrielcsapo/github-metrics?branch=master"><img src="https://coveralls.io/repos/github/gabrielcsapo/github-metrics/badge.svg?branch=master" alt="Coverage Status"></a>
-<a href="https://david-dm.org/gabrielcsapo/github-metrics"><img src="https://david-dm.org/gabrielcsapo/github-metrics.svg" alt="Dependency Status"></a>
-<a href="https://david-dm.org/gabrielcsapo/github-metrics#info=devDependencies"><img src="https://david-dm.org/gabrielcsapo/github-metrics/dev-status.svg" alt="devDependency Status"></a>
-<a href=""><img src="https://img.shields.io/npm/dt/github-metrics.svg" alt="npm"></a>
-<a href=""><img src="https://img.shields.io/npm/dm/github-metrics.svg" alt="npm"></a></p>
-<h2>Installation</h2><p><code>npm install github-metrics -g</code></p>
+<p><a href="https://www.npmjs.com/package/gh-metrics"><img src="https://img.shields.io/npm/v/gh-metrics.svg" alt="Npm Version"></a>
+<a href="https://travis-ci.org/gabrielcsapo/gh-metrics"><img src="https://travis-ci.org/gabrielcsapo/gh-metrics.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/github/gabrielcsapo/gh-metrics?branch=master"><img src="https://coveralls.io/repos/github/gabrielcsapo/gh-metrics/badge.svg?branch=master" alt="Coverage Status"></a>
+<a href="https://david-dm.org/gabrielcsapo/gh-metrics"><img src="https://david-dm.org/gabrielcsapo/gh-metrics.svg" alt="Dependency Status"></a>
+<a href="https://david-dm.org/gabrielcsapo/gh-metrics#info=devDependencies"><img src="https://david-dm.org/gabrielcsapo/gh-metrics/dev-status.svg" alt="devDependency Status"></a>
+<a href=""><img src="https://img.shields.io/npm/dt/gh-metrics.svg" alt="npm"></a>
+<a href=""><img src="https://img.shields.io/npm/dm/gh-metrics.svg" alt="npm"></a></p>
+<h2>Installation</h2><p><code>npm install gh-metrics -g</code></p>
 <h2>Usage</h2><blockquote>
 <p>command-line</p>
 </blockquote>
-<pre class="prettyprint source"><code>Usage: github-metrics [options]
+<pre class="prettyprint source"><code>Usage: gh-metrics [options]
 
 
 Options:
@@ -78,13 +79,13 @@ Options:
   -h, --help           output usage information</code></pre><blockquote>
 <p>examples</p>
 </blockquote>
-<p><code>github-metrics --user gabrielcsapo</code> // this will call github using the public api</p>
-<p><code>github-metrics --user gabrielcsapo --token {token}</code> // this will make the call with an authenticated token</p>
-<p>Debugging any errors that occur during your call please preface with <code>DEBUG=github-metrics</code> and example would look like</p>
-<pre class="prettyprint source"><code>DEBUG=github-metrics github-metrics --user gabrielcsapo</code></pre><blockquote>
+<p><code>gh-metrics --user gabrielcsapo</code> // this will call github using the public api</p>
+<p><code>gh-metrics --user gabrielcsapo --token {token}</code> // this will make the call with an authenticated token</p>
+<p>Debugging any errors that occur during your call please preface with <code>DEBUG=gh-metrics</code> and example would look like</p>
+<pre class="prettyprint source"><code>DEBUG=gh-metrics gh-metrics --user gabrielcsapo</code></pre><blockquote>
 <p>programatic</p>
 </blockquote>
-<pre class="prettyprint source lang-javascript"><code>const Metrics = require('github-metrics');
+<pre class="prettyprint source lang-javascript"><code>const Metrics = require('gh-metrics');
 Metrics({
     user: '',
     token: '',
@@ -169,7 +170,7 @@ Metrics({
   'url',
   'watchers',
   'watchers_count'
- ]</code></pre><h2>Example</h2><p><code>github-metrics --user gabrielcsapo --keys 'full_name, homepage, commits, open_issues_count, days_stagnant, health' --sort 'days_stagnant' --asc --table</code></p>
+ ]</code></pre><h2>Example</h2><p><code>gh-metrics --user gabrielcsapo --keys 'full_name, homepage, commits, open_issues_count, days_stagnant, health' --sort 'days_stagnant' --asc --table</code></p>
 <table>
 <thead>
 <tr>
@@ -279,7 +280,7 @@ Metrics({
 <td>&quot;🌩&quot;</td>
 </tr>
 <tr>
-<td>&quot;gabrielcsapo/github-metrics&quot;</td>
+<td>&quot;gabrielcsapo/gh-metrics&quot;</td>
 <td></td>
 <td>40</td>
 <td>2</td>
@@ -404,7 +405,7 @@ Metrics({
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Sun Jul 16 2017 13:03:46 GMT-0700 (PDT) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Sun Jul 16 2017 18:53:36 GMT-0700 (PDT) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -1,12 +1,12 @@
 /**
  * Github metrics module
- * @module github-metrics
+ * @module gh-metrics
  */
 
 const Github = require('github');
 const Async = require('async');
 const Table = require('markdown-table');
-const debug = require('debug')('github-metrics')
+const debug = require('debug')('gh-metrics')
 
 /**
  * metrics module that takes options and returns corresponding collated metrics back

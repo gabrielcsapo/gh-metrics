@@ -1,3 +1,7 @@
+# 0.5.0 (07/07/2017)
+
+- moved name to `gh-metrics`!
+
 # 0.4.4 (07/07/2017)
 
 - moves from octonode to node-github (more support)
