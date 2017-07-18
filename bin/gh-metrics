@@ -14,15 +14,17 @@ Program
     .option('-p, --page [page]', 'the page to start the search at, by default the limit is only 100, so pagination is necessary')
     .option('-l, --limit [limit]', 'limit the number of repos that are being returned')
     .option('--table', 'output a table of the data')
-    .option('-gp, --github-protocol [protocol]', 'the protocol to query github')
-    .option('-gh, --github-host [url]', 'the url of the github instance to query')
-    .option('-gd, --github-debug', 'a flag that allows debug logs from the github client')
+    .option('--github-protocol [protocol]', 'the protocol to query github')
+    .option('--github-host [url]', 'the url of the github instance to query')
+    .option('--github-debug', 'a flag that allows debug logs from the github client')
+    .option('--github-pathPrefix [prefix]', 'a prefix for the path for github')
     .parse(process.argv);
 
 if (Program.user) {
     Program.keys = Program.keys && Program.keys.split(',').map((k) => {
         return k.trim();
     }) || ['full_name', 'homepage', 'description', 'created_at', 'size'];
+
     Metrics({
         user: Program.user,
         token: Program.token,
@@ -35,7 +37,8 @@ if (Program.user) {
         github: {
           protocol: Program.githubProtocol || 'https',
           host: Program.githubHost || 'api.github.com',
-          debug: Program.githubDebug ? true : false
+          debug: Program.githubDebug ? true : false,
+          pathPrefix: Program.githubPathPrefix
         }
     }, function(err, metrics) {
         if(err) {

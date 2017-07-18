@@ -101,6 +101,7 @@ const supportedKeys = [
  * @param  {Object}   options.github - in order to change the instance of github being queried
  * @param  {Boolean}   options.github.debug - a flag set to get debug information from github
  * @param  {String}   options.github.protocol - can be http or https
+ * @param  {String}   options.pathPrefix - for enterprise github instances
  * @param  {String}   options.github.host - the host of the github instance to query
  * @param  {Function} callback - callback(err, results) to be executed when metrics have been collected
  */
@@ -126,6 +127,7 @@ module.exports = function metrics(options, callback) {
         debug: github.deub || false,
         protocol: github.protocol || 'https',
         host: github.host || 'api.github.com',
+        pathPrefix: github.pathPrefix || '',
         headers: {
             "Accept": ["application/vnd.github.mercy-preview+json"]
         }
