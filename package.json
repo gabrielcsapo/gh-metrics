@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .;",
     "test": "tape test/**.js",
-    "coverage": "tap test/*.js --coverage",
+    "coverage": "tap test/*.js --coverage --coverage-report=lcov",
     "generate-docs": "jsdoc --configure .jsdoc.json --verbose"
   },
   "bin": {
@@ -33,7 +33,7 @@
     "eslint": "^4.1.1",
     "jsdoc": "^3.5.3",
     "minami": "^1.2.3",
-    "tap": "^10.3.2",
+    "tap": "^10.7.0",
     "tape": "^4.6.3"
   },
   "engines": {
