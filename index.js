@@ -41,7 +41,7 @@ module.exports = function metrics(options, callback) {
         debug: github.deub || false,
         protocol: github.protocol || 'https',
         host: github.host || 'api.github.com',
-        pathPrefix: github.pathPrefix,
+        pathPrefix: github.pathPrefix || '',
         headers: {
             "Accept": ["application/vnd.github.mercy-preview+json"]
         }

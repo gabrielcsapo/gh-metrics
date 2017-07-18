@@ -1,3 +1,7 @@
+# 0.5.3 (0/17/2017)
+
+- sets default path prefix if not given
+
 # 0.5.2 (0/17/2017)
 
 - fixes integration with github enterprise usage
