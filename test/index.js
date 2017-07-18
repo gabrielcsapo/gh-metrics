@@ -1,11 +1,10 @@
-"use strict"
-
 const test = require('tape');
+
 const Metrics = require('../index');
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 test('gh-metrics', (t) => {
-    t.plan(3);
+    t.plan(4);
 
     t.test('should throw error if there is no user specificed', (t) => {
         Metrics({
@@ -15,11 +14,24 @@ test('gh-metrics', (t) => {
             sort: '',
             sortAsc: false
         }, (err, result) => {
-            if(err) {
-                t.ok(result === undefined);
-                t.pass('the function threw an errorr');
-            }
-        })
+            t.ok(err !== undefined);
+            t.ok(result === undefined);
+            t.end();
+        });
+    });
+
+    t.test('should throw error, because keys contains invalid key', (t) => {
+        Metrics({
+            user: 'gabrielcsapo',
+            token: GITHUB_TOKEN,
+            keys: ['full_name', 'picture'],
+            sort: '',
+            sortAsc: false
+        }, (err, result) => {
+            t.ok(err !== undefined);
+            t.ok(result === undefined);
+            t.end();
+        });
     });
 
     t.test('should be able to return a correctly structured query', (t) => {
@@ -51,8 +63,7 @@ test('gh-metrics', (t) => {
                     pass = false;
                 }
             });
-            pass ? t.pass('keys are the same') : t.fail('keys are not the same');
-            t.end();
+            pass ? t.end() : t.end('keys are not the same');
         });
     });
 
@@ -79,12 +90,11 @@ test('gh-metrics', (t) => {
 
           try {
             JSON.parse(result);
-            t.fail('should not be able to parse result');
+            t.end('should not be able to parse result');
           } catch(ex) {
             t.end();
           }
       });
     });
 
-    t.end();
 });

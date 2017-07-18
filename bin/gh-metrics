@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-"use strict"
 
 const Program = require('commander');
+
 const Metrics = require('../index.js');
 
 Program
