@@ -2,7 +2,6 @@
 
 > a cli to track github stats across different users github repos
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/gabrielcsapo/gh-metrics.svg)](https://greenkeeper.io/)
 [![Npm Version](https://img.shields.io/npm/v/gh-metrics.svg)](https://www.npmjs.com/package/gh-metrics)
 [![Build Status](https://travis-ci.org/gabrielcsapo/gh-metrics.svg?branch=master)](https://travis-ci.org/gabrielcsapo/gh-metrics)
 [![Coverage Status](https://lcov-server.herokuapp.com/badge/github%2Ecom/gabrielcsapo/gh-metrics.svg)](https://lcov-server.herokuapp.com/coverage/github%2Ecom/gabrielcsapo/gh-metrics)
