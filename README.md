@@ -4,9 +4,9 @@
 
 [![Npm Version](https://img.shields.io/npm/v/gh-metrics.svg)](https://www.npmjs.com/package/gh-metrics)
 [![Build Status](https://travis-ci.org/gabrielcsapo/gh-metrics.svg?branch=master)](https://travis-ci.org/gabrielcsapo/gh-metrics)
-[![Coverage Status](https://lcov-server.herokuapp.com/badge/github%2Ecom/gabrielcsapo/gh-metrics.svg)](https://lcov-server.herokuapp.com/coverage/github%2Ecom/gabrielcsapo/gh-metrics)
-[![Dependency Status](https://david-dm.org/gabrielcsapo/gh-metrics.svg)](https://david-dm.org/gabrielcsapo/gh-metrics)
-[![devDependency Status](https://david-dm.org/gabrielcsapo/gh-metrics/dev-status.svg)](https://david-dm.org/gabrielcsapo/gh-metrics#info=devDependencies)
+[![Coverage Status](https://lcov-server.gabrielcsapo.com/badge/github%2Ecom/gabrielcsapo/gh-metrics.svg)](https://lcov-server.gabrielcsapo.com/coverage/github%2Ecom/gabrielcsapo/gh-metrics)
+[![Dependency Status](https://starbuck.gabrielcsapo.com/badge/github/gabrielcsapo/gh-metrics/status.svg)](https://starbuck.gabrielcsapo.com/github/gabrielcsapo/gh-metrics)
+[![devDependency Status](https://starbuck.gabrielcsapo.com/badge/github/gabrielcsapo/gh-metrics/dev-status.svg)](https://starbuck.gabrielcsapo.com/github/gabrielcsapo/gh-metrics#info=devDependencies)
 [![npm](https://img.shields.io/npm/dt/gh-metrics.svg)]()
 [![npm](https://img.shields.io/npm/dm/gh-metrics.svg)]()
 
@@ -160,7 +160,7 @@ Metrics({
 | "gabrielcsapo/node-notebook"                    | "http://www.gabrielcsapo.com/node-notebook/"   | 144     | 2                 | 7             | "🌞"   |
 | "gabrielcsapo/gabrielcsapo.github.io"           | "http://www.gabrielcsapo.com"                  | 77      | 2                 | 7             | "🌞"   |
 | "gabrielcsapo/psychic-ui"                       | "http://www.gabrielcsapo.com/psychic-ui/"      | 130     | 1                 | 10            | "🌞"   |
-| "gabrielcsapo/node-coverage-server"             | "https://node-coverage-server.herokuapp.com/"  | 80      | 7                 | 21            | "🌞"   |
+| "gabrielcsapo/lcov-server"             | "https://lcov-server.gabrielcsapo.com/"  | 80      | 7                 | 21            | "🌞"   |
 | "gabrielcsapo/espyjs"                           |                                                | 6       | 0                 | 27            | "🌞"   |
 | "gabrielcsapo/psychic"                          | "http://www.gabrielcsapo.com/psychic/"         | 8       | 2                 | 45            | "⛅️"   |
 | "gabrielcsapo/monotime"                         | "http://www.gabrielcsapo.com/monotime/"        | 5       | 0                 | 51            | "⛅️"   |
