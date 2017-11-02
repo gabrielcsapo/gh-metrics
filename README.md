@@ -1,6 +1,6 @@
 # gh-metrics
 
-> a cli to track github stats across different users github repos
+> 📈 a cli to track github stats across different users github repos
 
 [![Npm Version](https://img.shields.io/npm/v/gh-metrics.svg)](https://www.npmjs.com/package/gh-metrics)
 [![Build Status](https://travis-ci.org/gabrielcsapo/gh-metrics.svg?branch=master)](https://travis-ci.org/gabrielcsapo/gh-metrics)
