@@ -1,3 +1,5 @@
+> DEPRECATED: THIS WILL NO LONGER BE UNDER DEVELOPMENT
+
 # gh-metrics
 
 > 📈 a cli to track github stats across different users github repos
